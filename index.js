@@ -130,6 +130,7 @@ module.exports.encode = function (object) {
 };
 
 module.exports.decode = function (str) {
+  if (str === '#1') return str;
   str = new Uint8Array(str);
   var object = msgpack.decode(str, options);
   if (Array.isArray(object)) {
