@@ -116,6 +116,7 @@ var decompressSinglePacket = function (object) {
 };
 
 module.exports.encode = function (object) {
+  if (object === "#2") return '';
   if (object) {
     if (Array.isArray(object)) {
       var len = object.length;
@@ -130,7 +131,7 @@ module.exports.encode = function (object) {
 };
 
 module.exports.decode = function (str) {
-  if (str === '#1') return str;
+  if (str === '') return '#1';
   str = new Uint8Array(str);
   var object = msgpack.decode(str, options);
   if (Array.isArray(object)) {
